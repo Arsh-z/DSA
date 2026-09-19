@@ -66,17 +66,57 @@ public class codeHelp {
 
 
 
+    static int pivot(int arr[]){
+        int n = arr.length;
+
+        int leftsum[] = new int[n];
+        int rightsum[] = new int[n];
+
+        //adding into left side
+        leftsum[0] = arr[0];
+        for(int i = 1; i<n; i++){
+            leftsum[i] = leftsum[i-1]+arr[i];
+
+        }
+
+        //adding into right side
+        rightsum[n - 1] = arr[n - 1];
+        for(int i = n-2; i>+0;i--){
+            rightsum[i]= rightsum[i+1] + arr[i];
+
+        }
+
+        for(int i = 0; i<n ; i++){
+            if(leftsum[i] == rightsum[i]){
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
-        public static void main(String[] args) {
-            int arr[] = {0, 0, 1, 1, 0, 2, 2, 1, 0, 2, 2, 1, 1};
+    public static void main(String[] args) {
+        int arr[] = {1,7,3,6,5,6};
+
+        System.out.println(pivot(arr));
+        int result = pivot(arr);
+        System.out.println("Pivot Index: " + result);
+
+
+    }
+
+
+
+
+
+           /* int arr[] = {0, 0, 1, 1, 0, 2, 2, 1, 0, 2, 2, 1, 1};
             int[] result = pointer(arr);
 
             for (int i : result) {
                 System.out.print(i + " ");
-            }
+            }*/
 
-        }
+
 
 
 
@@ -91,3 +131,6 @@ public class codeHelp {
 
 
 }
+
+
+
